@@ -11,7 +11,7 @@ app.secret_key = 'super_secret_key'
 # MySQL Configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'rajanmysql'  
+app.config['MYSQL_PASSWORD'] = 'quoramysql'  
 app.config['MYSQL_DB'] = 'quora_clone'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -39,22 +39,42 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        
+        confirm_password = request.form['confirm_password']
         # Basic validation
         if not username or not email or not password:
             flash('Please fill out all fields.', 'error')
             return redirect(url_for('signup'))
-            
+
+        if len(username) < 3:
+            flash('Username must be at least 3 characters.', 'error')
+            return redirect(url_for('signup'))    
+
+        if len(password) < 6:
+            flash('Password must be at least 6 characters.', 'error')
+            return redirect(url_for('signup'))    
         
+        # Check if passwords match
+        if password != confirm_password:
+            flash('Passwords do not match.', 'error')
+            return redirect(url_for('signup'))
+
+# Check password length
+        if len(password) < 6:
+            flash('Password must be at least 6 characters.', 'error')
+            return redirect(url_for('signup'))
+            
+
         cursor = mysql.connection.cursor()
         try:
-            cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", 
-                           (username, email, password))
+            cursor.execute(
+    "INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)",
+    (username, email, password)
+)
             mysql.connection.commit()
             flash('Account created successfully! Please login.', 'success')
             return redirect(url_for('login'))
         except MySQLdb.Error as e:
-            flash('Error: User with this email or username already exists.', 'error')
+            flash(f'Error: {e}', 'error')
         finally:
             cursor.close()
             
@@ -71,7 +91,7 @@ def login():
         user = cursor.fetchone()
         cursor.close()
         
-        if user and user['password'] == password:
+        if user and user['password_hash'] == password:
             session['user_id'] = user['id']
             session['username'] = user['username']
             flash(f'Welcome back, {user["username"]}!', 'success')
