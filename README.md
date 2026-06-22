@@ -1,38 +1,67 @@
-﻿# Quora Clone (Flask + MySQL)
+﻿# ASKHUB
 
-## Project Overview
+## About the Project
 
-A simple Quora-like web application built using Flask and MySQL. Users can create accounts, log in, ask questions, view questions, and post answers.
+ASKHUB is a simple question and answer platform inspired by Quora. It allows users to create an account, log in, ask questions, browse questions posted by other users, and share answers.
+
+The project was developed as part of the Earny.in Internship Program to learn full-stack web development using Flask and MySQL.
+
+The main goal of this project is to understand how frontend, backend, and database systems work together in a real-world application.
 
 ---
 
 ## Technologies Used
 
-* Python 3.x
+### Frontend
+
+* HTML
+* CSS
+
+### Backend
+
+* Python
 * Flask
+
+### Database
+
 * MySQL
-* Flask-MySQLdb
-* Flask-Bcrypt
-* HTML5
-* CSS3
-* Jinja2 Templates
+
+### Development Tools
+
+* Git
+* GitHub
+* Visual Studio Code
 
 ---
 
-## Software Required
+## Features
 
-Before running the project, install:
-
-1. Python 3.x
-2. MySQL Server 8.0
-3. MySQL Workbench
-4. Visual Studio Code (Recommended)
+* User Registration
+* User Login and Logout
+* Ask Questions
+* View Questions Feed
+* Submit Answers
+* Session Management
+* Flash Messages
+* Database Connectivity using MySQL
+* Responsive Interface
 
 ---
 
-## Python Packages
+## Software Requirements
 
-Install the required packages using:
+Before running the project, install the following software:
+
+* Python 3.x
+* MySQL Server
+* MySQL Workbench
+* Visual Studio Code
+
+---
+
+## Required Packages
+
+Install the required Python packages:
 
 ```bash
 pip install flask
@@ -41,7 +70,7 @@ pip install flask-bcrypt
 pip install mysqlclient
 ```
 
-Or install all together:
+Or install all packages together:
 
 ```bash
 pip install flask flask-mysqldb flask-bcrypt mysqlclient
@@ -51,7 +80,7 @@ pip install flask flask-mysqldb flask-bcrypt mysqlclient
 
 ## Database Setup
 
-Open MySQL Workbench and execute:
+Create a database named:
 
 ```sql
 CREATE DATABASE quora_clone;
@@ -64,18 +93,19 @@ Run the provided `schema.sql` file to create all required tables.
 ## Project Structure
 
 ```text
-quora/
+ASKHUB/
 │
 ├── app.py
 ├── schema.sql
+├── README.md
 │
 ├── static/
 │   └── style.css
 │
 └── templates/
     ├── base.html
-    ├── signup.html
     ├── login.html
+    ├── signup.html
     ├── feed.html
     ├── ask.html
     └── question.html
@@ -83,21 +113,15 @@ quora/
 
 ---
 
-## MySQL Configuration
+## Running the Project
 
-Update the MySQL credentials in `app.py`:
-
----
-
-## Run the Project
-
-Open terminal in the project folder and run:
+Run the application using:
 
 ```bash
 python app.py
 ```
 
-The application will start on:
+Open the browser and visit:
 
 ```text
 http://127.0.0.1:5000
@@ -105,16 +129,98 @@ http://127.0.0.1:5000
 
 ---
 
-## Features
+## Team Contributions
 
-* User Registration
-* User Login
-* Password Security using Bcrypt
+### Rajan Maurya
+
+**Project Coordinator & Repository Manager**
+
+Responsibilities:
+
+* Coordinated project development
+* Managed GitHub repository and branches
+* Reviewed and integrated team changes
+* Maintained project documentation
+* Tested overall project functionality
+* Organized project structure
+
+---
+
+### Om
+**Authentication Module**
+
+Responsibilities:
+
+* User Registration System
+* User Login System
 * Session Management
-* Ask Questions
-* View Questions
-* Post Answers
-* Responsive UI
-* Flash Messages for Errors and Success Notifications
+* Input Validation
+* Authentication Improvements
+
+Files Worked On:
+
+* login.html
+* signup.html
+* app.py
+
+---
+
+### Nyashaa 
+**Question Management Module**
+
+Responsibilities:
+
+* Ask Question Feature
+* Question Feed Display
+* Question Validation
+* Feed Management
+* Question System Improvements
+
+Files Worked On:
+
+* ask.html
+* feed.html
+* app.py
+
+---
+
+### Retish
+**Answer Management Module**
+
+Responsibilities:
+
+* Answer Submission Feature
+* Answer Display System
+* Answer Validation
+* Question Detail Page Management
+
+Files Worked On:
+
+* question.html
+* app.py
+
+---
+
+### Sanjana
+**User Interface & Styling Module**
+
+Responsibilities:
+
+* Frontend Design Improvements
+* CSS Styling
+* Layout Management
+* Navigation Enhancements
+* User Experience Improvements
+
+Files Worked On:
+
+* style.css
+* base.html
+* templates files
 
 
+---
+
+## Internship Project
+
+ASKHUB was developed as part of the Earny.in Internship Program to gain practical experience in web development, database management, GitHub collaboration, and software project workflow.
